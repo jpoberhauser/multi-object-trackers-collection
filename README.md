@@ -3,8 +3,12 @@
 
 - [Multi-Object Tracking](#multi-object-tracking)
   - [Surveys](#surveys)
+    - [2022](#2022)
+      - [Recent Advances in Embedding Methods for Multi-Object Tracking: A Survey](#recent-advances-in-embedding-methods-for-multi-object-tracking-a-survey)
     - [2021](#2021)
       - [Do Different Tracking Tasks Require Different Appearance Models?](#do-different-tracking-tasks-require-different-appearance-models)
+    - [2019](#2019)
+      - [Deep Learning in Video Multi-Object Tracking: A Survey](#deep-learning-in-video-multi-object-tracking-a-survey)
   - [Tracking by Detection](#tracking-by-detection)
     - [2024](#2024)
       - [Hybrid-SORT](#hybrid-sort)
@@ -14,22 +18,22 @@
       - [GHOST](#ghost)
       - [OCSort](#ocsort)
       - [SUSHI](#sushi)
-    - [2022](#2022)
+    - [2022](#2022-1)
       - [StrongSort](#strongsort)
       - [Bot-Sort](#bot-sort)
-    - [QDTrack: Quasi-Dense Similarity Learning for Appearance-Only Multiple Object Tracking](#qdtrack-quasi-dense-similarity-learning-for-appearance-only-multiple-object-tracking)
-    - [MeMOT: Multi-Object Tracking with Memory](#memot-multi-object-tracking-with-memory)
+      - [QDTrack: Quasi-Dense Similarity Learning for Appearance-Only Multiple Object Tracking](#qdtrack-quasi-dense-similarity-learning-for-appearance-only-multiple-object-tracking)
+      - [MeMOT: Multi-Object Tracking with Memory](#memot-multi-object-tracking-with-memory)
     - [2021](#2021-1)
       - [Online Multiple Object Tracking with Cross-Task Synergy](#online-multiple-object-tracking-with-cross-task-synergy)
       - [Learning a Proposal Classifier for Multiple Object Tracking](#learning-a-proposal-classifier-for-multiple-object-tracking)
       - [ByteTrack](#bytetrack)
-    - [Tracking Objects as Points](#tracking-objects-as-points)
+      - [Tracking Objects as Points](#tracking-objects-as-points)
     - [2020](#2020)
       - [FairMOT: On the Fairness of Detection and Re-Identification in Multiple Object Tracking](#fairmot-on-the-fairness-of-detection-and-re-identification-in-multiple-object-tracking)
       - [A Unified Object Motion and Affinity Model for Online Multi-Object Tracking](#a-unified-object-motion-and-affinity-model-for-online-multi-object-tracking)
       - [Towards Real-Time Multi-Object Tracking](#towards-real-time-multi-object-tracking)
       - [Probabilistic Tracklet Scoring and Inpainting for Multiple Object Tracking](#probabilistic-tracklet-scoring-and-inpainting-for-multiple-object-tracking)
-    - [2019](#2019)
+    - [2019](#2019-1)
       - [Bag of Tricks and A Strong Baseline for Deep Person Re-identification](#bag-of-tricks-and-a-strong-baseline-for-deep-person-re-identification)
     - [2017](#2017)
       - [DeepSort](#deepsort)
@@ -41,7 +45,7 @@
   - [Joint Tracking and ID](#joint-tracking-and-id)
     - [2024](#2024-1)
       - [Multiple Object Tracking as ID Prediction](#multiple-object-tracking-as-id-prediction)
-    - [2022](#2022-1)
+    - [2022](#2022-2)
       - [Global Tracking Transformers](#global-tracking-transformers)
     - [2021](#2021-2)
       - [Joint Object Detection and Multi-Object Tracking with Graph Neural Networks](#joint-object-detection-and-multi-object-tracking-with-graph-neural-networks)
@@ -52,10 +56,10 @@
       - [RetinaTrack: Online Single Stage Joint Detection and Tracking](#retinatrack-online-single-stage-joint-detection-and-tracking)
       - [TubeTK: Adopting Tubes to Track Multi-Object in a One-Step Training Model](#tubetk-adopting-tubes-to-track-multi-object-in-a-one-step-training-model)
       - [Chained-Tracker: Chaining Paired Attentive Regression Results for End-to-End Joint Multiple-Object Detection and Tracking](#chained-tracker-chaining-paired-attentive-regression-results-for-end-to-end-joint-multiple-object-detection-and-tracking)
-    - [2019](#2019-1)
+    - [2019](#2019-2)
       - [Tracking without bells and whistles](#tracking-without-bells-and-whistles)
   - [End-to-End](#end-to-end)
-    - [2022](#2022-2)
+    - [2022](#2022-3)
       - [MOTRv2: Bootstrapping End-to-End Multi-Object Tracking by Pretrained Object Detectors](#motrv2-bootstrapping-end-to-end-multi-object-tracking-by-pretrained-object-detectors)
       - [TrackFormer](#trackformer)
     - [2021](#2021-3)
@@ -63,7 +67,7 @@
       - [Learning to Track with Object Permanence](#learning-to-track-with-object-permanence)
     - [2020](#2020-2)
       - [Simple Unsupervised Multi-Object Tracking](#simple-unsupervised-multi-object-tracking)
-    - [2019](#2019-2)
+    - [2019](#2019-3)
       - [How To Train Your Deep Multi-Object Tracker](#how-to-train-your-deep-multi-object-tracker)
   - [3D Tracking](#3d-tracking)
     - [2024](#2024-2)
@@ -76,14 +80,27 @@ Within each year, the post lists out the title of each paper with its correspond
 
 ## Surveys
 
+### 2022
+
+#### Recent Advances in Embedding Methods for Multi-Object Tracking: A Survey
+
+[paper](https://arxiv.org/abs/2205.10766)
+
 ### 2021
 
 #### Do Different Tracking Tasks Require Different Appearance Models?
 
-
 [paper](https://arxiv.org/abs/2107.02156)
 
 [python code](https://github.com/Zhongdao/UniTrack)
+
+
+### 2019
+
+#### Deep Learning in Video Multi-Object Tracking: A Survey
+
+
+[paper](https://arxiv.org/pdf/1907.12740)
 
 ## Tracking by Detection
 
@@ -143,14 +160,14 @@ Within each year, the post lists out the title of each paper with its correspond
 
 [python code -- boxmot package](https://github.com/mikel-brostrom/boxmot/tree/master)
 
-### QDTrack: Quasi-Dense Similarity Learning for Appearance-Only Multiple Object Tracking
+#### QDTrack: Quasi-Dense Similarity Learning for Appearance-Only Multiple Object Tracking
 
 
 [paper]https://arxiv.org/abs/2210.06984
 
 [python code](https://github.com/SysCV/qdtrack)
 
-### MeMOT: Multi-Object Tracking with Memory
+#### MeMOT: Multi-Object Tracking with Memory
 
 
 [paper](https://arxiv.org/abs/2203.16761)
@@ -178,7 +195,7 @@ Within each year, the post lists out the title of each paper with its correspond
 [python code -- boxmot package](https://github.com/mikel-brostrom/boxmot/tree/master)
 
 
-### Tracking Objects as Points
+#### Tracking Objects as Points
 
 [paper](https://arxiv.org/abs/2004.01177)
 
