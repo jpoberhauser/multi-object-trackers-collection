@@ -86,11 +86,15 @@ Within each year, the post lists out the title of each paper with its correspond
 
 #### Recent Advances in Embedding Methods for Multi-Object Tracking: A Survey
 
+Multi-object tracking (MOT) aims to associate target objects across video frames in order to obtain entire moving trajectories. With the advancement of deep neural networks and the increasing demand for intelligent video analysis, MOT has gained significantly increased interest in the computer vision community. Embedding methods play an essential role in object location estimation and temporal identity association in MOT. Unlike other computer vision tasks, such as image classification, object detection, re-identification, and segmentation, embedding methods in MOT have large variations, and they have never been systematically analyzed and summarized. In this survey, we first conduct a comprehensive overview with in-depth analysis for embedding methods in MOT from seven different perspectives, including patch-level embedding, single-frame embedding, cross-frame joint embedding, correlation embedding, sequential embedding, tracklet embedding, and cross-track relational embedding. We further summarize the existing widely used MOT datasets and analyze the advantages of existing state-of-the-art methods according to their embedding strategies. Finally, some critical yet under-investigated areas and future research directions are discussed.
+
 [paper](https://arxiv.org/abs/2205.10766)
 
 ### 2021
 
 #### Do Different Tracking Tasks Require Different Appearance Models?
+
+Tracking objects of interest in a video is one of the most popular and widely applicable problems in computer vision. However, with the years, a Cambrian explosion of use cases and benchmarks has fragmented the problem in a multitude of different experimental setups. As a consequence, the literature has fragmented too, and now novel approaches proposed by the community are usually specialised to fit only one specific setup. To understand to what extent this specialisation is necessary, in this work we present UniTrack, a solution to address five different tasks within the same framework. UniTrack consists of a single and task-agnostic appearance model, which can be learned in a supervised or self-supervised fashion, and multiple ``heads'' that address individual tasks and do not require training. We show how most tracking tasks can be solved within this framework, and that the same appearance model can be successfully used to obtain results that are competitive against specialised methods for most of the tasks considered. The framework also allows us to analyse appearance models obtained with the most recent self-supervised methods, thus extending their evaluation and comparison to a larger variety of important problems.
 
 [paper](https://arxiv.org/abs/2107.02156)
 
@@ -101,6 +105,9 @@ Within each year, the post lists out the title of each paper with its correspond
 
 #### Deep Learning in Video Multi-Object Tracking: A Survey
 
+The problem of Multiple Object Tracking (MOT) consists in following the trajectory of different objects in a sequence, usually a video. In recent years, with the rise of Deep Learning, the algorithms that provide a solution to this problem have benefited from the representational power of deep models. This paper provides a comprehensive survey on works that employ Deep Learning models to solve
+the task of MOT on single-camera videos. Four main steps in MOT algorithms are identified, and an in-depth review of how Deep Learning was employed in each one of these stages is presented. A complete experimental comparison of the presented works on the three MOTChallenge datasets is
+also provided, identifying a number of similarities among the top-performing methods and presenting some possible future research directions.
 
 [paper](https://arxiv.org/pdf/1907.12740)
 
@@ -109,6 +116,8 @@ Within each year, the post lists out the title of each paper with its correspond
 ### 2024
 
 #### Hybrid-SORT
+
+Multi-Object Tracking (MOT) aims to detect and associate all desired objects across frames. Most methods accomplish the task by explicitly or implicitly leveraging strong cues (i.e., spatial and appearance information), which exhibit powerful instance-level discrimination. However, when object occlusion and clustering occur, spatial and appearance information will become ambiguous simultaneously due to the high overlap among objects. In this paper, we demonstrate this long-standing challenge in MOT can be efficiently and effectively resolved by incorporating weak cues to compensate for strong cues. Along with velocity direction, we introduce the confidence and height state as potential weak cues. With superior performance, our method still maintains Simple, Online and Real-Time (SORT) characteristics. Also, our method shows strong generalization for diverse trackers and scenarios in a plug-and-play and training-free manner. Significant and consistent improvements are observed when applying our method to 5 different representative trackers. Further, with both strong and weak cues, our method Hybrid-SORT achieves superior performance on diverse benchmarks, including MOT17, MOT20, and especially DanceTrack where interaction and severe occlusion frequently happen with complex motions.
 
 [paper](https://arxiv.org/abs/2308.00783)
 
@@ -250,11 +259,15 @@ Modern multiple object tracking (MOT) systems usually follow the \emph{tracking-
 
 #### Probabilistic Tracklet Scoring and Inpainting for Multiple Object Tracking
 
-[paper]https://arxiv.org/abs/2012.02337
+Despite the recent advances in multiple object tracking (MOT), achieved by joint detection and tracking, dealing with long occlusions remains a challenge. This is due to the fact that such techniques tend to ignore the long-term motion information. In this paper, we introduce a probabilistic autoregressive motion model to score tracklet proposals by directly measuring their likelihood. This is achieved by training our model to learn the underlying distribution of natural tracklets. As such, our model allows us not only to assign new detections to existing tracklets, but also to inpaint a tracklet when an object has been lost for a long time, e.g., due to occlusion, by sampling tracklets so as to fill the gap caused by misdetections. Our experiments demonstrate the superiority of our approach at tracking objects in challenging sequences; it outperforms the state of the art in most standard MOT metrics on multiple MOT benchmark datasets, including MOT16, MOT17, and MOT20
+
+[paper](https://arxiv.org/abs/2012.02337)
 
 ### 2019
 
 #### Bag of Tricks and A Strong Baseline for Deep Person Re-identification
+
+This paper explores a simple and efficient baseline for person re-identification (ReID). Person re-identification (ReID) with deep neural networks has made progress and achieved high performance in recent years. However, many state-of-the-arts methods design complex network structure and concatenate multi-branch features. In the literature, some effective training tricks are briefly appeared in several papers or source codes. This paper will collect and evaluate these effective training tricks in person ReID. By combining these tricks together, the model achieves 94.5% rank-1 and 85.9% mAP on Market1501 with only using global features.
 
 [paper](https://arxiv.org/abs/1903.07071)
 
@@ -264,28 +277,45 @@ Modern multiple object tracking (MOT) systems usually follow the \emph{tracking-
 
 #### DeepSort
 
+Simple Online and Realtime Tracking (SORT) is a pragmatic approach to multiple object tracking with a focus on simple, effective algorithms. In this paper, we integrate appearance information to improve the performance of SORT. Due to this extension we are able to track objects through longer periods of occlusions, effectively reducing the number of identity switches. In spirit of the original framework we place much of the computational complexity into an offline pre-training stage where we learn a deep association metric on a large-scale person re-identification dataset. During online application, we establish measurement-to-track associations using nearest neighbor queries in visual appearance space. Experimental evaluation shows that our extensions reduce the number of identity switches by 45%, achieving overall competitive performance at high frame rates.
+
 [paper](https://arxiv.org/abs/1703.07402)
 
 [python code](https://github.com/nwojke/deep_sort)
 
 #### Tracking The Untrackable: Learning To Track Multiple Cues with Long-Term Dependencies
 
+The majority of existing solutions to the Multi-Target Tracking (MTT) problem do not combine cues in a coherent end-to-end fashion over a long period of time. However, we present an online method that encodes long-term temporal dependencies across multiple cues. One key challenge of tracking methods is to accurately track occluded targets or those which share similar appearance properties with surrounding objects. To address this challenge, we present a structure of Recurrent Neural Networks (RNN) that jointly reasons on multiple cues over a temporal window. We are able to correct many data association errors and recover observations from an occluded state. We demonstrate the robustness of our data-driven approach by tracking multiple targets using their appearance, motion, and even interactions. Our method outperforms previous works on multiple publicly available datasets including the challenging MOT benchmark.
 
-[paper]https://arxiv.org/abs/1701.01909
+[paper](https://arxiv.org/abs/1701.01909)
 
 ### 2016
 
 #### Person Re-Identification by Multi-Channel Parts-Based CNN with Improved Triplet Loss Function
 
+Person re-identification across cameras remains a very
+challenging problem, especially when there are no overlapping fields of view between cameras. In this paper,
+we present a novel multi-channel parts-based convolutional neural network (CNN) model under the triplet framework
+for person re-identification. Specifically, the proposed CNN
+model consists of multiple channels to jointly learn both the
+global full-body and local body-parts features of the input
+persons. The CNN model is trained by an improved triplet
+loss function that serves to pull the instances of the same
+person closer, and at the same time push the instances belonging to different persons farther from each other in the
+learned feature space. Extensive comparative evaluations demonstrate that our proposed method significantly outperforms many state-of-the-art approaches, including both
+traditional and deep network-based ones, on the challenging i-LIDS, VIPeR, PRID2011 and CUHK01 datasets.
+
 [paper](https://openaccess.thecvf.com/content_cvpr_2016/papers/Cheng_Person_Re-Identification_by_CVPR_2016_paper.pdf)
 
 #### Learning by tracking: Siamese CNN for robust target association
 
+This paper introduces a novel approach to the task of data association within the context of pedestrian tracking, by introducing a two-stage learning scheme to match pairs of detections. First, a Siamese convolutional neural network (CNN) is trained to learn descriptors encoding local spatio-temporal structures between the two input image patches, aggregating pixel values and optical flow information. Second, a set of contextual features derived from the position and size of the compared input patches are combined with the CNN output by means of a gradient boosting classifier to generate the final matching probability. This learning approach is validated by using a linear programming based multi-person tracker showing that even a simple and efficient tracker may outperform much more complex models when fed with our learned matching probabilities. Results on publicly available sequences show that our method meets state-of-the-art standards in multiple people tracking.
 
-[paper]https://arxiv.org/abs/1604.07866
+[paper](https://arxiv.org/abs/1604.07866)
 
 #### SORT
 
+This paper explores a pragmatic approach to multiple object tracking where the main focus is to associate objects efficiently for online and realtime applications. To this end, detection quality is identified as a key factor influencing tracking performance, where changing the detector can improve tracking by up to 18.9%. Despite only using a rudimentary combination of familiar techniques such as the Kalman Filter and Hungarian algorithm for the tracking components, this approach achieves an accuracy comparable to state-of-the-art online trackers. Furthermore, due to the simplicity of our tracking method, the tracker updates at a rate of 260 Hz which is over 20x faster than other state-of-the-art trackers.
 
 [paper](https://arxiv.org/abs/1602.00763)
 
