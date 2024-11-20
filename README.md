@@ -326,9 +326,18 @@ This paper explores a pragmatic approach to multiple object tracking where the m
 
 ## Joint Tracking and ID
 
+Joint tracking-as-ID integrates object detection and tracking into a single framework, viewing the tracking task as an end-to-end ID assignment problem. Instead of associating detections post hoc, it predicts both object identities (IDs) and trajectories directly from video frames.
+
+key concepts: End-to-End Training, ID Prediction as Contextual Prompting, Transformer and GNN Architectures, Applications to Any Object.
+
+There are no handcrafted heuristics, uses global optimization, and usually generalizes very well to unseen scenarios, occlusion, and object interactions.
+
+
 ### 2024
 
 #### Multiple Object Tracking as ID Prediction
+
+In Multiple Object Tracking (MOT), tracking-by-detection methods have stood the test for a long time, which split the process into two parts according to the definition: object detection and association. They leverage robust single-frame detectors and treat object association as a post-processing step through hand-crafted heuristic algorithms and surrogate tasks. However, the nature of heuristic techniques prevents end-to-end exploitation of training data, leading to increasingly cumbersome and challenging manual modification while facing complicated or novel scenarios. In this paper, we regard this object association task as an End-to-End in-context ID prediction problem and propose a streamlined baseline called MOTIP. Specifically, we form the target embeddings into historical trajectory information while considering the corresponding IDs as in-context prompts, then directly predict the ID labels for the objects in the current frame. Thanks to this end-to-end process, MOTIP can learn tracking capabilities straight from training data, freeing itself from burdensome hand-crafted algorithms. Without bells and whistles, our method achieves impressive state-of-the-art performance in complex scenarios like DanceTrack and SportsMOT, and it performs competitively with other transformer-based methods on MOT17. We believe that MOTIP demonstrates remarkable potential and can serve as a starting point for future research
 
 [paper](https://arxiv.org/abs/2403.16848)
 
@@ -338,6 +347,20 @@ This paper explores a pragmatic approach to multiple object tracking where the m
 
 #### Global Tracking Transformers
 
+We present a novel transformer-based architecture for
+global multi-object tracking. Our network takes a short
+sequence of frames as input and produces global trajectories for all objects. The core component is a global tracking transformer that operates on objects from all frames
+in the sequence. The transformer encodes object features
+from all frames, and uses trajectory queries to group them
+into trajectories. The trajectory queries are object features
+from a single frame and naturally produce unique trajectories. Our global tracking transformer does not require
+intermediate pairwise grouping or combinatorial association, and can be jointly trained with an object detector. It
+achieves competitive performance on the popular MOT17
+benchmark, with 75.3 MOTA and 59.1 HOTA. More importantly, our framework seamlessly integrates into stateof-the-art large-vocabulary detectors to track any objects.
+Experiments on the challenging TAO dataset show that our
+framework consistently improves upon baselines that are
+based on pairwise association, outperforming published
+work by a significant 7.7 tracking mAP
 
 [paper](https://openaccess.thecvf.com/content/CVPR2022/papers/Zhou_Global_Tracking_Transformers_CVPR_2022_paper.pdf)
 
@@ -347,12 +370,15 @@ This paper explores a pragmatic approach to multiple object tracking where the m
 
 #### Joint Object Detection and Multi-Object Tracking with Graph Neural Networks
 
+Object detection and data association are critical components in multi-object tracking (MOT) systems. Despite the fact that the two components are dependent on each other, prior works often design detection and data association modules separately which are trained with separate objectives. As a result, one cannot back-propagate the gradients and optimize the entire MOT system, which leads to sub-optimal performance. To address this issue, recent works simultaneously optimize detection and data association modules under a joint MOT framework, which has shown improved performance in both modules. In this work, we propose a new instance of joint MOT approach based on Graph Neural Networks (GNNs). The key idea is that GNNs can model relations between variable-sized objects in both the spatial and temporal domains, which is essential for learning discriminative features for detection and data association. Through extensive experiments on the MOT15/16/17/20 datasets, we demonstrate the effectiveness of our GNN-based joint MOT approach and show state-of-the-art performance for both detection and MOT tasks.
+
 [paper](https://arxiv.org/abs/2006.13164)
 
 [python code](https://github.com/yongxinw/GSDT)
 
 #### Track to Detect and Segment: An Online Multi-Object Tracker
 
+Most online multi-object trackers perform object detection stand-alone in a neural net without any input from tracking. In this paper, we present a new online joint detection and tracking model, TraDeS (TRAck to DEtect and Segment), exploiting tracking clues to assist detection end-to-end. TraDeS infers object tracking offset by a cost volume, which is used to propagate previous object features for improving current object detection and segmentation. Effectiveness and superiority of TraDeS are shown on 4 datasets, including MOT (2D tracking), nuScenes (3D tracking), MOTS and Youtube-VIS (instance segmentation tracking)
 
 [paper](https://arxiv.org/abs/2103.08808)
 
@@ -363,18 +389,25 @@ This paper explores a pragmatic approach to multiple object tracking where the m
 
 #### TransTrack: Multiple Object Tracking with Transformer
 
+In this work, we propose TransTrack, a simple but efficient scheme to solve the multiple object tracking problems. TransTrack leverages the transformer architecture, which is an attention-based query-key mechanism. It applies object features from the previous frame as a query of the current frame and introduces a set of learned object queries to enable detecting new-coming objects. It builds up a novel joint-detection-and-tracking paradigm by accomplishing object detection and object association in a single shot, simplifying complicated multi-step settings in tracking-by-detection methods. On MOT17 and MOT20 benchmark, TransTrack achieves 74.5\% and 64.5\% MOTA, respectively, competitive to the state-of-the-art methods. We expect TransTrack to provide a novel perspective for multiple object tracking.
+
 [paper](https://arxiv.org/abs/2012.15460)
 
 [python code](https://github.com/PeizeSun/TransTrack)
 
 #### Learning a Neural Solver for Multiple Object Tracking
 
-[paper]https://arxiv.org/abs/1912.07515
+Graphs offer a natural way to formulate Multiple Object Tracking (MOT) within the tracking-by-detection paradigm. However, they also introduce a major challenge for learning methods, as defining a model that can operate on such \textit{structured domain} is not trivial. As a consequence, most learning-based work has been devoted to learning better features for MOT, and then using these with well-established optimization frameworks. In this work, we exploit the classical network flow formulation of MOT to define a fully differentiable framework based on Message Passing Networks (MPNs). By operating directly on the graph domain, our method can reason globally over an entire set of detections and predict final solutions. Hence, we show that learning in MOT does not need to be restricted to feature extraction, but it can also be applied to the data association step. We show a significant improvement in both MOTA and IDF1 on three publicly available benchmarks
+
+[paper](https://arxiv.org/abs/1912.07515)
 
 [python code](https://github.com/dvl-tum/mot_neural_solver)
 
 
 #### RetinaTrack: Online Single Stage Joint Detection and Tracking
+
+Traditionally multi-object tracking and object detection are performed using separate systems with most prior works focusing exclusively on one of these aspects over the other. Tracking systems clearly benefit from having access to accurate detections, however and there is ample evidence in literature that detectors can benefit from tracking which, for example, can help to smooth predictions over time. In this paper we focus on the tracking-by-detection paradigm for autonomous driving where both tasks are mission critical. We propose a conceptually simple and efficient joint model of detection and tracking, called RetinaTrack, which modifies the popular single stage RetinaNet approach such that it is amenable to instance-level embedding training. We show, via evaluations on the Waymo Open Dataset, that we outperform a recent state of the art tracking algorithm while requiring significantly less computation. We believe that our simple yet effective approach can serve as a strong baseline for future work in this area.
+
 
 [paper](https://arxiv.org/abs/2003.13870)
 
@@ -382,12 +415,15 @@ This paper explores a pragmatic approach to multiple object tracking where the m
 
 #### TubeTK: Adopting Tubes to Track Multi-Object in a One-Step Training Model
 
+Multi-object tracking is a fundamental vision problem that has been studied for a long time. As deep learning brings excellent performances to object detection algorithms, Tracking by Detection (TBD) has become the mainstream tracking framework. Despite the success of TBD, this two-step method is too complicated to train in an end-to-end manner and induces many challenges as well, such as insufficient exploration of video spatial-temporal information, vulnerability when facing object occlusion, and excessive reliance on detection results. To address these challenges, we propose a concise end-to-end model TubeTK which only needs one step training by introducing the "bounding-tube" to indicate temporal-spatial locations of objects in a short video clip. TubeTK provides a novel direction of multi-object tracking, and we demonstrate its potential to solve the above challenges without bells and whistles. We analyze the performance of TubeTK on several MOT benchmarks and provide empirical evidence to show that TubeTK has the ability to overcome occlusions to some extent without any ancillary technologies like Re-ID. Compared with other methods that adopt private detection results, our one-stage end-to-end model achieves state-of-the-art performances even if it adopts no ready-made detection results. We hope that the proposed TubeTK model can serve as a simple but strong alternative for video-based MOT task. 
 
-[paper]https://arxiv.org/abs/2006.05683
+[paper](https://arxiv.org/abs/2006.05683)
 
 [python code](https://github.com/BoPang1996/TubeTK)
 
 #### Chained-Tracker: Chaining Paired Attentive Regression Results for End-to-End Joint Multiple-Object Detection and Tracking
+
+Existing Multiple-Object Tracking (MOT) methods either follow the tracking-by-detection paradigm to conduct object detection, feature extraction and data association separately, or have two of the three subtasks integrated to form a partially end-to-end solution. Going beyond these sub-optimal frameworks, we propose a simple online model named Chained-Tracker (CTracker), which naturally integrates all the three subtasks into an end-to-end solution (the first as far as we know). It chains paired bounding boxes regression results estimated from overlapping nodes, of which each node covers two adjacent frames. The paired regression is made attentive by object-attention (brought by a detection module) and identity-attention (ensured by an ID verification module). The two major novelties: chained structure and paired attentive regression, make CTracker simple, fast and effective, setting new MOTA records on MOT16 and MOT17 challenge datasets (67.6 and 66.6, respectively), without relying on any extra training data.
 
 [paper](https://arxiv.org/abs/2007.14557)
 
@@ -396,6 +432,24 @@ This paper explores a pragmatic approach to multiple object tracking where the m
 ### 2019
 
 #### Tracking without bells and whistles
+
+The problem of tracking multiple objects in a video sequence poses several challenging tasks. For tracking-by detection, these include object re-identification, motion prediction and dealing with occlusions. We present a tracker
+(without bells and whistles) that accomplishes tracking
+without specifically targeting any of these tasks, in particular, we perform no training or optimization on tracking
+data. To this end, we exploit the bounding box regression of
+an object detector to predict the position of an object in the
+next frame, thereby converting a detector into a Tracktor.
+We demonstrate the potential of Tracktor and provide a new
+state-of-the-art on three multi-object tracking benchmarks
+by extending it with a straightforward re-identification and
+camera motion compensation.
+We then perform an analysis on the performance and
+failure cases of several state-of-the-art tracking methods
+in comparison to our Tracktor. Surprisingly, none of the
+dedicated tracking methods are considerably better in dealing with complex tracking scenarios, namely, small and
+occluded objects or missing detections. However, our approach tackles most of the easy tracking scenarios. Therefore, we motivate our approach as a new tracking paradigm
+and point out promising future research directions. Overall, Tracktor yields superior tracking performance than any
+current tracking method and our analysis exposes remaining and unsolved tracking challenges to inspire future research directions.
 
 [paper](https://arxiv.org/pdf/1903.05625)
 
@@ -413,12 +467,15 @@ This paper explores a pragmatic approach to multiple object tracking where the m
 
 #### MOTRv2: Bootstrapping End-to-End Multi-Object Tracking by Pretrained Object Detectors
 
+In this paper, we propose MOTRv2, a simple yet effective pipeline to bootstrap end-to-end multi-object tracking with a pretrained object detector. Existing end-to-end methods, MOTR and TrackFormer are inferior to their tracking-by-detection counterparts mainly due to their poor detection performance. We aim to improve MOTR by elegantly incorporating an extra object detector. We first adopt the anchor formulation of queries and then use an extra object detector to generate proposals as anchors, providing detection prior to MOTR. The simple modification greatly eases the conflict between joint learning detection and association tasks in MOTR. MOTRv2 keeps the query propogation feature and scales well on large-scale benchmarks. MOTRv2 ranks the 1st place (73.4% HOTA on DanceTrack) in the 1st Multiple People Tracking in Group Dance Challenge. Moreover, MOTRv2 reaches state-of-the-art performance on the BDD100K dataset. We hope this simple and effective pipeline can provide some new insights to the end-to-end MOT community.
 
 [paper](https://arxiv.org/abs/2211.09791)
 
 [python code](https://github.com/megvii-research/MOTRv2?tab=readme-ov-file)
 
 #### TrackFormer
+
+The challenging task of multi-object tracking (MOT) requires simultaneous reasoning about track initialization, identity, and spatio-temporal trajectories. We formulate this task as a frame-to-frame set prediction problem and introduce TrackFormer, an end-to-end trainable MOT approach based on an encoder-decoder Transformer architecture. Our model achieves data association between frames via attention by evolving a set of track predictions through a video sequence. The Transformer decoder initializes new tracks from static object queries and autoregressively follows existing tracks in space and time with the conceptually new and identity preserving track queries. Both query types benefit from self- and encoder-decoder attention on global frame-level features, thereby omitting any additional graph optimization or modeling of motion and/or appearance. TrackFormer introduces a new tracking-by-attention paradigm and while simple in its design is able to achieve state-of-the-art performance on the task of multi-object tracking (MOT17 and MOT20) and segmentation (MOTS20).
 
 [paper](https://arxiv.org/abs/2101.02702)
 
@@ -429,12 +486,15 @@ This paper explores a pragmatic approach to multiple object tracking where the m
 
 #### MOTR: End-to-End Multiple-Object Tracking with Transformer
 
+Temporal modeling of objects is a key challenge in multiple object tracking (MOT). Existing methods track by associating detections through motion-based and appearance-based similarity heuristics. The post-processing nature of association prevents end-to-end exploitation of temporal variations in video sequence. In this paper, we propose MOTR, which extends DETR and introduces track query to model the tracked instances in the entire video. Track query is transferred and updated frame-by-frame to perform iterative prediction over time. We propose tracklet-aware label assignment to train track queries and newborn object queries. We further propose temporal aggregation network and collective average loss to enhance temporal relation modeling. Experimental results on DanceTrack show that MOTR significantly outperforms state-of-the-art method, ByteTrack by 6.5% on HOTA metric. On MOT17, MOTR outperforms our concurrent works, TrackFormer and TransTrack, on association performance. MOTR can serve as a stronger baseline for future research on temporal modeling and Transformer-based trackers.
+
 [paper](https://arxiv.org/abs/2105.03247)
 
 [python code](https://github.com/megvii-research/MOTR)
 
 #### Learning to Track with Object Permanence
 
+Tracking by detection, the dominant approach for online multi-object tracking, alternates between localization and association steps. As a result, it strongly depends on the quality of instantaneous observations, often failing when objects are not fully visible. In contrast, tracking in humans is underlined by the notion of object permanence: once an object is recognized, we are aware of its physical existence and can approximately localize it even under full occlusions. In this work, we introduce an end-to-end trainable approach for joint object detection and tracking that is capable of such reasoning. We build on top of the recent CenterTrack architecture, which takes pairs of frames as input, and extend it to videos of arbitrary length. To this end, we augment the model with a spatio-temporal, recurrent memory module, allowing it to reason about object locations and identities in the current frame using all the previous history. It is, however, not obvious how to train such an approach. We study this question on a new, large-scale, synthetic dataset for multi-object tracking, which provides ground truth annotations for invisible objects, and propose several approaches for supervising tracking behind occlusions. Our model, trained jointly on synthetic and real data, outperforms the state of the art on KITTI and MOT17 datasets thanks to its robustness to occlusions.
 
 [paper](https://arxiv.org/abs/2103.14258)
 
@@ -444,12 +504,15 @@ This paper explores a pragmatic approach to multiple object tracking where the m
 
 #### Simple Unsupervised Multi-Object Tracking
 
+Multi-object tracking has seen a lot of progress recently, albeit with substantial annotation costs for developing better and larger labeled datasets. In this work, we remove the need for annotated datasets by proposing an unsupervised re-identification network, thus sidestepping the labeling costs entirely, required for training. Given unlabeled videos, our proposed method (SimpleReID) first generates tracking labels using SORT and trains a ReID network to predict the generated labels using crossentropy loss. We demonstrate that SimpleReID performs substantially better than simpler alternatives, and we recover the full performance of its supervised counterpart consistently across diverse tracking frameworks. The observations are unusual because unsupervised ReID is not expected to excel in crowded scenarios with occlusions, and drastic viewpoint changes. By incorporating our unsupervised SimpleReID with CenterTrack trained on augmented still images, we establish a new state-of-the-art performance on popular datasets like MOT16/17 without using tracking supervision, beating current best (CenterTrack) by 0.2-0.3 MOTA and 4.4-4.8 IDF1 scores. We further provide evidence for limited scope for improvement in IDF1 scores beyond our unsupervised ReID in the studied settings. Our investigation suggests reconsideration towards more sophisticated, supervised, end-to-end trackers by showing promise in simpler unsupervised alternatives.
+
 [paper](https://arxiv.org/abs/2006.02609)
 
 ### 2019
 
 #### How To Train Your Deep Multi-Object Tracker
 
+The recent trend in vision-based multi-object tracking (MOT) is heading towards leveraging the representational power of deep learning to jointly learn to detect and track objects. However, existing methods train only certain sub-modules using loss functions that often do not correlate with established tracking evaluation measures such as Multi-Object Tracking Accuracy (MOTA) and Precision (MOTP). As these measures are not differentiable, the choice of appropriate loss functions for end-to-end training of multi-object tracking methods is still an open research problem. In this paper, we bridge this gap by proposing a differentiable proxy of MOTA and MOTP, which we combine in a loss function suitable for end-to-end training of deep multi-object trackers. As a key ingredient, we propose a Deep Hungarian Net (DHN) module that approximates the Hungarian matching algorithm. DHN allows estimating the correspondence between object tracks and ground truth objects to compute differentiable proxies of MOTA and MOTP, which are in turn used to optimize deep trackers directly. We experimentally demonstrate that the proposed differentiable framework improves the performance of existing multi-object trackers, and we establish a new state of the art on the MOTChallenge benchmark.
 
 [paper](https://arxiv.org/abs/1906.06618)
 
@@ -462,6 +525,7 @@ This paper explores a pragmatic approach to multiple object tracking where the m
 
 #### MCTrack: A Unified 3D Multi-Object Tracking Framework for Autonomous Driving
 
+This paper introduces MCTrack, a new 3D multi-object tracking method that achieves state-of-the-art (SOTA) performance across KITTI, nuScenes, and Waymo datasets. Addressing the gap in existing tracking paradigms, which often perform well on specific datasets but lack generalizability, MCTrack offers a unified solution. Additionally, we have standardized the format of perceptual results across various datasets, termed BaseVersion, facilitating researchers in the field of multi-object tracking (MOT) to concentrate on the core algorithmic development without the undue burden of data preprocessing. Finally, recognizing the limitations of current evaluation metrics, we propose a novel set that assesses motion information output, such as velocity and acceleration, crucial for downstream tasks.
 
 [paper](https://arxiv.org/abs/2409.16149)
 
