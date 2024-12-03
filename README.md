@@ -59,6 +59,8 @@
     - [2019](#2019-2)
       - [Tracking without bells and whistles](#tracking-without-bells-and-whistles)
   - [End-to-End](#end-to-end)
+    - [2024](#2024-2)
+      - [Samba: Synchronized Set-of-Sequences Modeling for Multiple Object Tracking](#samba-synchronized-set-of-sequences-modeling-for-multiple-object-tracking)
     - [2022](#2022-3)
       - [MOTRv2: Bootstrapping End-to-End Multi-Object Tracking by Pretrained Object Detectors](#motrv2-bootstrapping-end-to-end-multi-object-tracking-by-pretrained-object-detectors)
       - [TrackFormer](#trackformer)
@@ -70,10 +72,13 @@
     - [2019](#2019-3)
       - [How To Train Your Deep Multi-Object Tracker](#how-to-train-your-deep-multi-object-tracker)
   - [3D Tracking](#3d-tracking)
-    - [2024](#2024-2)
+    - [2024](#2024-3)
       - [MCTrack: A Unified 3D Multi-Object Tracking Framework for Autonomous Driving](#mctrack-a-unified-3d-multi-object-tracking-framework-for-autonomous-driving)
   - [Animal Tracking / Implementation](#animal-tracking--implementation)
       - [An HMM-based framework for identity-aware long-term multi-object tracking from sparse and uncertain identification: use case on long-term tracking in livestock](#an-hmm-based-framework-for-identity-aware-long-term-multi-object-tracking-from-sparse-and-uncertain-identification-use-case-on-long-term-tracking-in-livestock)
+  - [Motion Modeling](#motion-modeling)
+    - [2024](#2024-4)
+      - [No Identity, no problem: Motion through detection for people tracking](#no-identity-no-problem-motion-through-detection-for-people-tracking)
 
 
 This repo provides a list of research papers on Multi-Object Tracking (MOT). The post is organized by the publication year of each paper, starting from 2016 to 2024.
@@ -462,6 +467,14 @@ current tracking method and our analysis exposes remaining and unsolved tracking
 ## End-to-End 
 
 
+### 2024
+
+#### Samba: Synchronized Set-of-Sequences Modeling for Multiple Object Tracking
+
+
+[paper](https://arxiv.org/abs/2410.01806)
+
+[code](https://github.com/mattiasegu/sambamotr)
 
 ### 2022
 
@@ -539,3 +552,14 @@ This paper introduces MCTrack, a new 3D multi-object tracking method that achiev
 [paper](https://drive.google.com/file/d/1_-6oLD4X2FHp3bo-Qp4PDtcpEMWr0kIL/view)
 
 [python code](https://github.com/ngobibibnbe/uncertain-identity-aware-tracking)
+
+
+## Motion Modeling
+
+### 2024
+
+#### No Identity, no problem: Motion through detection for people tracking
+
+[paper](https://arxiv.org/abs/2411.16466)
+
+[python code](https://github.com/cvlab-epfl/noid-nopb)
